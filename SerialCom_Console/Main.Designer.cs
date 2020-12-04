@@ -48,7 +48,7 @@ namespace SerialCom_Console
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.databit7 = new System.Windows.Forms.RadioButton();
             this.databit8 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.serialDisconnect = new System.Windows.Forms.Button();
             this.serialStatus = new System.Windows.Forms.Label();
             this.serialBaudrate = new System.Windows.Forms.ComboBox();
             this.serialConnect = new System.Windows.Forms.Button();
@@ -123,7 +123,7 @@ namespace SerialCom_Console
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.serialDisconnect);
             this.groupBox1.Controls.Add(this.serialStatus);
             this.groupBox1.Controls.Add(this.serialBaudrate);
             this.groupBox1.Controls.Add(this.serialConnect);
@@ -300,15 +300,15 @@ namespace SerialCom_Console
             this.databit8.Text = "8";
             this.databit8.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // serialDisconnect
             // 
-            this.button1.Location = new System.Drawing.Point(428, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Disconnect";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.serialDisconnect.Location = new System.Drawing.Point(428, 33);
+            this.serialDisconnect.Name = "serialDisconnect";
+            this.serialDisconnect.Size = new System.Drawing.Size(75, 23);
+            this.serialDisconnect.TabIndex = 7;
+            this.serialDisconnect.Text = "Disconnect";
+            this.serialDisconnect.UseVisualStyleBackColor = true;
+            this.serialDisconnect.Click += new System.EventHandler(this.serialDisconnect_Click);
             // 
             // serialStatus
             // 
@@ -459,7 +459,7 @@ namespace SerialCom_Console
             this.asciiSend2.TabIndex = 8;
             this.asciiSend2.Text = "Send";
             this.asciiSend2.UseVisualStyleBackColor = true;
-            this.asciiSend2.Click += new System.EventHandler(this.asciiSend2_Click);
+            this.asciiSend2.Click += new System.EventHandler(this.asciiSend_Click);
             // 
             // asciiInputClear2
             // 
@@ -469,7 +469,7 @@ namespace SerialCom_Console
             this.asciiInputClear2.TabIndex = 7;
             this.asciiInputClear2.Text = "Clear";
             this.asciiInputClear2.UseVisualStyleBackColor = true;
-            this.asciiInputClear2.Click += new System.EventHandler(this.asciiInputClear2_Click);
+            this.asciiInputClear2.Click += new System.EventHandler(this.asciiInputClear_Click);
             // 
             // asciiInput2
             // 
@@ -486,7 +486,7 @@ namespace SerialCom_Console
             this.asciiSend3.TabIndex = 11;
             this.asciiSend3.Text = "Send";
             this.asciiSend3.UseVisualStyleBackColor = true;
-            this.asciiSend3.Click += new System.EventHandler(this.asciiSend3_Click);
+            this.asciiSend3.Click += new System.EventHandler(this.asciiSend_Click);
             // 
             // asciiInputClear3
             // 
@@ -496,7 +496,7 @@ namespace SerialCom_Console
             this.asciiInputClear3.TabIndex = 10;
             this.asciiInputClear3.Text = "Clear";
             this.asciiInputClear3.UseVisualStyleBackColor = true;
-            this.asciiInputClear3.Click += new System.EventHandler(this.asciiInputClear3_Click);
+            this.asciiInputClear3.Click += new System.EventHandler(this.asciiInputClear_Click);
             // 
             // asciiInput3
             // 
@@ -551,7 +551,7 @@ namespace SerialCom_Console
             this.hexSend3.TabIndex = 9;
             this.hexSend3.Text = "Send";
             this.hexSend3.UseVisualStyleBackColor = true;
-            this.hexSend3.Click += new System.EventHandler(this.hexSend3_Click);
+            this.hexSend3.Click += new System.EventHandler(this.hexSend_Click);
             // 
             // hexInputClear3
             // 
@@ -561,7 +561,7 @@ namespace SerialCom_Console
             this.hexInputClear3.TabIndex = 8;
             this.hexInputClear3.Text = "Clear";
             this.hexInputClear3.UseVisualStyleBackColor = true;
-            this.hexInputClear3.Click += new System.EventHandler(this.hexInputClear3_Click);
+            this.hexInputClear3.Click += new System.EventHandler(this.hexInputClear_Click);
             // 
             // hexInput2
             // 
@@ -580,7 +580,7 @@ namespace SerialCom_Console
             this.hexSend2.TabIndex = 6;
             this.hexSend2.Text = "Send";
             this.hexSend2.UseVisualStyleBackColor = true;
-            this.hexSend2.Click += new System.EventHandler(this.hexSend2_Click);
+            this.hexSend2.Click += new System.EventHandler(this.hexSend_Click);
             // 
             // hexInputClear2
             // 
@@ -590,7 +590,7 @@ namespace SerialCom_Console
             this.hexInputClear2.TabIndex = 5;
             this.hexInputClear2.Text = "Clear";
             this.hexInputClear2.UseVisualStyleBackColor = true;
-            this.hexInputClear2.Click += new System.EventHandler(this.hexInputClear2_Click);
+            this.hexInputClear2.Click += new System.EventHandler(this.hexInputClear_Click);
             // 
             // tabPage2
             // 
@@ -611,7 +611,7 @@ namespace SerialCom_Console
             this.tabPage2.Text = "ASCII input";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -619,7 +619,7 @@ namespace SerialCom_Console
             this.Controls.Add(this.inputControl);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Serial communication console";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -655,7 +655,7 @@ namespace SerialCom_Console
         private System.Windows.Forms.ComboBox serialBaudrate;
         private System.Windows.Forms.TextBox rcvHex;
         private System.Windows.Forms.Label serialStatus;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button serialDisconnect;
         private System.Windows.Forms.Button rcvHexClear;
         private System.Windows.Forms.Button rcvHexCopy;
         private System.Windows.Forms.GroupBox groupBox2;

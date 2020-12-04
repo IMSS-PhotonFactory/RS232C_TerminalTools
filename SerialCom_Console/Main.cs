@@ -14,7 +14,15 @@ namespace SerialCom_Console
     public partial class Main : Form
     {
         private SerialPort serialport;
-        
+
+        private List<Button> sendHexButton;
+        private List<MaskedTextBox> sendHexText;
+        private List<Button> clearHexButton;
+
+        private List<Button> sendAsciiButton;
+        private List<TextBox> sendAsciiText;
+        private List<Button> clearAsciiButton;
+
         public Main()
         {
             InitializeComponent();
@@ -22,6 +30,13 @@ namespace SerialCom_Console
             serialport = new SerialPort();
             inputControl.Enabled = false;
 
+            sendHexButton = new List<Button>(new Button[] { hexSend, hexSend2, hexSend3 });
+            sendHexText = new List<MaskedTextBox>(new MaskedTextBox[] { hexInput, hexInput2, hexInput3 });
+            clearHexButton = new List<Button>(new Button[] { hexInputClear, hexInputClear2, hexInputClear3 });
+
+            sendAsciiButton = new List<Button>(new Button[] { asciiSend, asciiSend2, asciiSend3 });
+            sendAsciiText = new List<TextBox>(new TextBox[] { asciiInput, asciiInput2, asciiInput3 });
+            clearAsciiButton = new List<Button>(new Button[] { asciiInputClear, asciiInputClear2, asciiInputClear3 });
         }
 
         private void SendHex(string inputstr)
@@ -220,7 +235,7 @@ namespace SerialCom_Console
             serialport.Dispose();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void serialDisconnect_Click(object sender, EventArgs e)
         {
             SerialClose();
         }
@@ -255,62 +270,46 @@ namespace SerialCom_Console
 
         private void asciiSend_Click(object sender, EventArgs e)
         {
-            SendAscii(asciiInput.Text);
+            for (int i = 0; i < sendAsciiButton.Count; i++)
+            {
+                if (sender.Equals(sendAsciiButton[i]))
+                {
+                    SendAscii(sendAsciiText[i].Text);
+                }
+            }
         }
 
         private void asciiInputClear_Click(object sender, EventArgs e)
         {
-            asciiInput.Clear();
-        }
-
-        private void asciiSend2_Click(object sender, EventArgs e)
-        {
-            SendAscii(asciiInput2.Text);
-        }
-
-        private void asciiInputClear2_Click(object sender, EventArgs e)
-        {
-            asciiInput2.Clear();
-        }
-
-        private void asciiSend3_Click(object sender, EventArgs e)
-        {
-            SendAscii(asciiInput3.Text);
-        }
-
-        private void asciiInputClear3_Click(object sender, EventArgs e)
-        {
-            asciiInput3.Clear();
+            for (int i = 0; i < clearAsciiButton.Count; i++)
+            {
+                if (sender.Equals(clearAsciiButton[i]))
+                {
+                    sendAsciiText[i].Clear();
+                }
+            }
         }
 
         private void hexSend_Click(object sender, EventArgs e)
         {
-            SendHex(hexInput.Text);
+            for (int i = 0; i < sendHexButton.Count; i++)
+            {
+                if (sender.Equals(sendHexButton[i]))
+                {
+                    SendHex(sendHexText[i].Text);
+                }
+            }
         }
 
         private void hexInputClear_Click(object sender, EventArgs e)
         {
-            hexInput.Clear();
-        }
-
-        private void hexSend2_Click(object sender, EventArgs e)
-        {
-            SendHex(hexInput2.Text);
-        }
-
-        private void hexInputClear2_Click(object sender, EventArgs e)
-        {
-            hexInput2.Clear();
-        }
-
-        private void hexSend3_Click(object sender, EventArgs e)
-        {
-            SendHex(hexInput3.Text);
-        }
-
-        private void hexInputClear3_Click(object sender, EventArgs e)
-        {
-            hexInput3.Clear();
+            for (int i = 0; i < clearHexButton.Count; i++)
+            {
+                if (sender.Equals(clearHexButton[i]))
+                {
+                    sendHexText[i].Clear();
+                }
+            }
         }
     }
 }
