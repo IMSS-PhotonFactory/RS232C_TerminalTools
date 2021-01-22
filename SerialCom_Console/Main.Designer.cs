@@ -77,6 +77,11 @@ namespace SerialCom_Console
             this.hexSend2 = new System.Windows.Forms.Button();
             this.hexInputClear2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.termNone = new System.Windows.Forms.RadioButton();
+            this.termLf = new System.Windows.Forms.RadioButton();
+            this.termCr = new System.Windows.Forms.RadioButton();
+            this.termCrLf = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -394,7 +399,7 @@ namespace SerialCom_Console
             this.groupBox2.Controls.Add(this.rcvHex);
             this.groupBox2.Controls.Add(this.rcvHexCopy);
             this.groupBox2.Controls.Add(this.rcvHexClear);
-            this.groupBox2.Location = new System.Drawing.Point(12, 272);
+            this.groupBox2.Location = new System.Drawing.Point(12, 297);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(600, 353);
             this.groupBox2.TabIndex = 8;
@@ -611,11 +616,67 @@ namespace SerialCom_Console
             this.tabPage2.Text = "ASCII input";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(320, 274);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Terminator";
+            // 
+            // termNone
+            // 
+            this.termNone.AutoSize = true;
+            this.termNone.Checked = true;
+            this.termNone.Location = new System.Drawing.Point(389, 272);
+            this.termNone.Name = "termNone";
+            this.termNone.Size = new System.Drawing.Size(54, 19);
+            this.termNone.TabIndex = 12;
+            this.termNone.TabStop = true;
+            this.termNone.Text = "None";
+            this.termNone.UseVisualStyleBackColor = true;
+            // 
+            // termLf
+            // 
+            this.termLf.AutoSize = true;
+            this.termLf.Location = new System.Drawing.Point(494, 272);
+            this.termLf.Name = "termLf";
+            this.termLf.Size = new System.Drawing.Size(37, 19);
+            this.termLf.TabIndex = 13;
+            this.termLf.Text = "LF";
+            this.termLf.UseVisualStyleBackColor = true;
+            // 
+            // termCr
+            // 
+            this.termCr.AutoSize = true;
+            this.termCr.Location = new System.Drawing.Point(449, 272);
+            this.termCr.Name = "termCr";
+            this.termCr.Size = new System.Drawing.Size(39, 19);
+            this.termCr.TabIndex = 14;
+            this.termCr.Text = "CR";
+            this.termCr.UseVisualStyleBackColor = true;
+            // 
+            // termCrLf
+            // 
+            this.termCrLf.AutoSize = true;
+            this.termCrLf.Location = new System.Drawing.Point(537, 272);
+            this.termCrLf.Name = "termCrLf";
+            this.termCrLf.Size = new System.Drawing.Size(59, 19);
+            this.termCrLf.TabIndex = 15;
+            this.termCrLf.Text = "CR+LF";
+            this.termCrLf.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 631);
+            this.ClientSize = new System.Drawing.Size(623, 661);
+            this.Controls.Add(this.termCrLf);
+            this.Controls.Add(this.termCr);
+            this.Controls.Add(this.termLf);
+            this.Controls.Add(this.termNone);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.inputControl);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -641,6 +702,7 @@ namespace SerialCom_Console
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -694,6 +756,11 @@ namespace SerialCom_Console
         private System.Windows.Forms.RadioButton handshakeRts;
         private System.Windows.Forms.RadioButton handshakeXon;
         private System.Windows.Forms.RadioButton handshakeNone;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton termNone;
+        private System.Windows.Forms.RadioButton termLf;
+        private System.Windows.Forms.RadioButton termCr;
+        private System.Windows.Forms.RadioButton termCrLf;
     }
 }
 

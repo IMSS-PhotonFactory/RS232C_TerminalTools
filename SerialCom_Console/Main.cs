@@ -53,6 +53,15 @@ namespace SerialCom_Console
                 }
             }
 
+            if(termCr.Checked | termCrLf.Checked)
+            {
+                sendhexlist.Add(0x0D);
+            }
+            if(termLf.Checked | termCrLf.Checked)
+            {
+                sendhexlist.Add(0x0A);
+            }
+
             AddLog($"Input accepted {sendhexlist.Count} bytes.");
             if (sendhexlist.Count == 0)
             {
@@ -257,7 +266,17 @@ namespace SerialCom_Console
 
         private void SendAscii(string str)
         {
+            if (termCr.Checked | termCrLf.Checked)
+            {
+                str += "\r";
+            }
+            if (termLf.Checked | termCrLf.Checked)
+            {
+                str += "\n";
+            }
+            
             byte[] sendhex = Encoding.ASCII.GetBytes(str);
+
 
             AddLog($"Input accepted {sendhex.Length} bytes.");
             if (sendhex.Length == 0)
